@@ -20,3 +20,22 @@ model User {
   name String
   mobile Int
 }
+model admin{
+  id Int @id @default(autoincrement())
+  username String @unique
+  password String
+  name String
+  mobile Int
+  restaurant restaurants[]
+
+}
+
+model restaurants{
+  id Int @id @default(autoincrement())
+  name String
+  address String
+  contact Int
+  email String
+  adminId Int
+  owner admin @relation(fields: [adminId] , references: [id])
+}

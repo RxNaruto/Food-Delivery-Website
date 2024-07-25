@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 import {PrismaClient} from "@prisma/client"
 import { comparePassword, hashPassword } from "../types/hashing";
 import { JWT_SECRET } from "../config";
-import { addingRestaurant, adminloginTypes, adminsignupTypes } from "../types/admin";
+import { addingRestaurant, adminloginTypes, adminsignupTypes, foodTypes } from "../types/admin";
 import { adminAuth } from "../middleware/adminAuth";
 import { CustomRequest } from "../types/CustomRequest";
 const adminRouter = Router();
@@ -170,8 +170,44 @@ adminRouter.post("/addRes",adminAuth, async(req:CustomRequest,res)=>{
         })
         
     }
-    
+})
 
+interface addFood{
+    name: string;
+    price: number;
+    description: string;
+    restaurantId: number;
+}
+
+adminRouter.post("/addFood",adminAuth,async(req,res)=>{
+    const body: addFood = req.body;
+    const {success} = foodTypes.safeParse(body);
+    if(!success){
+        return res.status(400).json({
+            message: "Incorrect details"
+        })
+    }
+    try {
+        const food = await prisma.food.create({
+            data: {
+                name: body.name,
+                price: body.price,
+                description: body.description,
+                restaurantId: body.restaurantId
+            }
+        })
+
+        res.status(200).json({
+            message: "Food item added Successfully",
+            itemId: food.id
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Internal Server error"
+        })
+        
+        
+    }
 
 
 

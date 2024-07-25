@@ -22,3 +22,11 @@ export const addingRestaurant = z.object({
 
 
 })
+
+export const foodTypes = z.object({
+    name: z.string(),
+    price: z.number(),
+    description: z.string(),
+    restaurantId: z.number()
+
+})

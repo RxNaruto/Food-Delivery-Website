@@ -17,7 +17,7 @@ userRouter.post("/signup",async(req,res)=>{
     const {success} = signupTypes.safeParse(body);
     if(!success){
         console.log(body);
-        return res.status(403).json({
+        return res.status(400).json({
             message: "Incorrect details"
         })
 
@@ -29,7 +29,7 @@ userRouter.post("/signup",async(req,res)=>{
     })
         
     if(existingUser){
-         return res.status(403).json({
+         return res.status(406).json({
             message: "user already exist"
          })
     }
@@ -82,7 +82,7 @@ userRouter.post("/login",async(req,res)=>{
     const body: loginBody = req.body;
     const {success} = loginTypes.safeParse(body);
     if(!success){
-        return res.status(403).json({
+        return res.status(400).json({
             message: "Incorrect details"
         })
 

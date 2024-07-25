@@ -38,4 +38,15 @@ model restaurants{
   email String
   adminId Int
   owner admin @relation(fields: [adminId] , references: [id])
+  food Food[]
+}
+
+model Food{
+  id Int @id @default(autoincrement())
+  name String
+  price Int
+  description String
+  restaurantId Int
+  restaurant restaurants  @relation(fields: [restaurantId], references: [id])
+  
 }

@@ -5,6 +5,10 @@ import { Home } from "./pages/Home";
 import { Alogin } from "./pages/aLogin";
 import { Asignup } from "./pages/Asignup";
 import { AdminPage } from "./pages/AdminPage";
+import { AddedRestaurant } from "./pages/AddedRestuarant";
+import { AddRestaurants } from "./pages/AddRestaurant";
+import { AddFood } from "./pages/AddFood";
+import { AddedFood } from "./pages/AddedFood";
 
 
 function App(){
@@ -18,6 +22,10 @@ function App(){
     <Route path="/alogin" element={<Alogin />}/>
     <Route path="/asignup" element={<Asignup />}/>
     <Route path="/aPage" element={<AdminPage />}/>
+    <Route path="/resAdd" element={<AddedRestaurant />} />
+    <Route path="/aRes" element={<AddRestaurants />} />
+    <Route path="/aFood" element={<AddFood />} />
+    <Route path="/foodAdded" element={<AddedFood />} />
     
 
     </Routes>

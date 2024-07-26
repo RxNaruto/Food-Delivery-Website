@@ -5,13 +5,13 @@ import { CustomRequest } from "../types/CustomRequest";
 
 
 interface DecodedToken{
-    adminId: number;
+    userId: number;
     role: string;
 }
 
 
 
-export const adminAuth=(req: CustomRequest,res: Response,next: NextFunction)=>{
+export const userAuth=(req: CustomRequest,res: Response,next: NextFunction)=>{
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
 
@@ -22,12 +22,12 @@ export const adminAuth=(req: CustomRequest,res: Response,next: NextFunction)=>{
     }
     try{
         const decoded = jwt.verify(token,JWT_SECRET) as DecodedToken;
-        if(decoded.role!=='admin'){
+        if(decoded.role!=='user'){
             return res.status(403).json({ message: "Access denied" });
 
         }
-        req.adminId = decoded.adminId;
-        console.log(decoded.adminId);
+        req.adminId = decoded.userId;
+        console.log(decoded.userId);
         next();
 
     }catch(e){

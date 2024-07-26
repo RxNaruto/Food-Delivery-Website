@@ -56,7 +56,7 @@ adminRouter.post("/signup",async(req,res)=>{
         
         if(newUser){
            
-            const token = jwt.sign({adminId: newUser.id},JWT_SECRET)
+            const token = jwt.sign({adminId: newUser.id,role: 'admin'},JWT_SECRET)
             console.log(newUser.id);
             res.status(200).json({
                 message: "Signup complete",
@@ -111,7 +111,7 @@ adminRouter.post("/login",async(req,res)=>{
           }
        
         else{
-            const token = jwt.sign({adminId: eUser.id},JWT_SECRET)
+            const token = jwt.sign({adminId: eUser.id, role: 'admin'},JWT_SECRET)
             res.status(200).json({
                 message: "Signin complete",
                 token: token,

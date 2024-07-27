@@ -39,7 +39,7 @@ export const Signup=()=>{
                  mobile: parseInt(mobile)
                 })
                 localStorage.setItem("token",response.data.token);
-                navigate("/home");
+                navigate("/getFood");
                } catch (error) {
                 console.log(error);
                }

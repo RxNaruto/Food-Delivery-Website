@@ -6,11 +6,32 @@ const foodRouter = Router();
 const prisma = new PrismaClient();
 
 foodRouter.get("/getAll",userAuth,async(req: Request,res: Response)=>{
+
     try {
-        const response = await prisma.food.findMany();
+        let response;
+        if(req.query.search){
+            const searchQuery = req.query.search.toString();
+            response = await prisma.food.findMany({
+                where: {
+                    name: {
+                        contains: searchQuery,
+                        mode: 'insensitive'
+                    }
+                }
+            })
+            res.status(200).json({
+                foods: response
+            })
+        }
+        else{
+            response = await prisma.food.findMany();
         res.status(200).json({
             foods: response
         })
+
+        }
+
+         
     } catch (error) {
         console.log(error);
         res.status(500).json({

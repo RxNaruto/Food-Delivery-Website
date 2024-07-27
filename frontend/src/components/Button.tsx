@@ -4,8 +4,8 @@ interface ButtonProp{
 }
 
 export const Button=({label,onClick}: ButtonProp)=>{
-    return <div className="bg-blue-200 w-20">
-        <button onClick={onClick}>{label}</button>
+    return <div className="my-4">
+        <button onClick={onClick} className="text-white bg-red-500 hover:bg-red-600  h-12 w-36 rounded-2xl ">{label}</button>
     </div>
 
 }

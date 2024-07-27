@@ -3,6 +3,8 @@ import { Button } from "../components/Button"
 import { InputBox } from "../components/InputBox"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Heading } from "../components/Heading"
+import { SubHeading } from "../components/SubHeading"
 
 export const Login=()=>{
     const[username,setUsername]=useState("");
@@ -10,7 +12,10 @@ export const Login=()=>{
     const navigate = useNavigate();
 
   
-    return <div>
+    return <div className="flex flex-col h-screen justify-center items-center bg-image2">
+        <div className="bg-slate-800 w-1/3 h-3/6 flex flex-col items-center justify-center drop-shadow-2xl rounded-md">
+        <Heading label={"Login"} />
+        <SubHeading label={"Enter Your Details Here"} />
         <InputBox label={"username"} placeholder={"Jhon@mail.com"} onChange={
             (e)=>{
             setUsername(e.target.value)
@@ -38,6 +43,7 @@ export const Login=()=>{
                
             }
         }/>
+        </div>
 
     </div>
 

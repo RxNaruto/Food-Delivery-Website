@@ -19,7 +19,7 @@ export const AddRestaurants=()=>{
         }
         
             try {
-                const response = await axios.post("http://localhost:3000/api/v1/admin/addRes",{
+                 await axios.post("http://localhost:3000/api/v1/admin/addRes",{
                     name,
                     address,
                     contact: parseInt(contact),

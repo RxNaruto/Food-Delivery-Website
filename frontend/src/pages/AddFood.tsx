@@ -19,7 +19,7 @@ export const AddFood=()=>{
         }
         
             try {
-                const response = await axios.post("http://localhost:3000/api/v1/admin/addFood",{
+                    await axios.post("http://localhost:3000/api/v1/admin/addFood",{
                     name,
                     price: parseInt(price),
                    description,

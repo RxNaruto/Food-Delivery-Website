@@ -30,7 +30,7 @@ export const Alogin=()=>{
                 
                 })
                 localStorage.setItem("token",response.data.token);
-                navigate("/home");
+                navigate("/aPage");
                } catch (error) {
                 console.log(error);
                 

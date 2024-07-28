@@ -10,6 +10,7 @@ import { AddRestaurants } from "./pages/AddRestaurant";
 import { AddFood } from "./pages/AddFood";
 import { AddedFood } from "./pages/AddedFood";
 import { AllFoodItems } from "./pages/AllFoodItems";
+import { Loading } from "./components/Loading";
 
 
 function App(){
@@ -28,6 +29,7 @@ function App(){
     <Route path="/aFood" element={<AddFood />} />
     <Route path="/foodAdded" element={<AddedFood />} />
     <Route path="/getFood" element={<AllFoodItems />} />
+    <Route path="/loading" element={<Loading />} />
     
 
     </Routes>

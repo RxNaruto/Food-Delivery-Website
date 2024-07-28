@@ -3,6 +3,8 @@ import { InputBox } from "../components/InputBox"
 import { Button } from "../components/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Heading } from "../components/Heading";
+import { SubHeading } from "../components/SubHeading";
 
 export const AddRestaurants=()=>{
     const[name,setName] = useState("");
@@ -38,8 +40,12 @@ export const AddRestaurants=()=>{
 
         
     }
-    return <div>
+    return <div className="flex flex-col h-screen justify-center items-center bg-image2">
 
+        <div className="bg-slate-800 w-2/6 h-4/6 flex flex-col items-center justify-center drop-shadow-2xl rounded-md">
+        <Heading label={"Add Restaurant"}/>
+        <SubHeading label={"Enter restaurant details here"} />
+        
         <InputBox label={"Name"} placeholder={"Jaggi"} onChange={
             (e)=>{
                 setName(e.target.value);
@@ -65,5 +71,6 @@ export const AddRestaurants=()=>{
         }
         />
 
+        </div>
    </div>
 }

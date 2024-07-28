@@ -3,6 +3,8 @@ import { Button } from "../components/Button"
 import { InputBox } from "../components/InputBox"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { Heading } from "../components/Heading"
+import { SubHeading } from "../components/SubHeading"
 
 export const Asignup=()=>{
     const[username,setUsername]=useState("");
@@ -10,21 +12,24 @@ export const Asignup=()=>{
     const[name,setName]=useState("");
     const[mobile,setMobile]=useState("");
     const navigate = useNavigate();
-    return <div>
-        <InputBox label={"username"} placeholder={"Jhon@mail.com"} onChange={
+    return <div className="flex flex-col h-screen justify-center items-center bg-image2">
+       <div className="bg-slate-800 w-2/6 h-4/6 flex flex-col items-center justify-center drop-shadow-2xl rounded-md">
+       <Heading label={"Signup"}/>
+            <SubHeading label={"Enter you details here"} />
+       <InputBox label={"Email"} placeholder={"Jhon@mail.com"} onChange={
             (e)=>{
             setUsername(e.target.value)
 
         }}/>
-        <InputBox label={"password"} placeholder={"1231231"} onChange={
+        <InputBox label={"Password"} placeholder={"1231231"} onChange={
             (e)=>{
             setPassword(e.target.value);
         }}/>
-        <InputBox label={"name"} placeholder={"Jhon"} onChange={
+        <InputBox label={"Name"} placeholder={"Jhon"} onChange={
             (e)=>{
             setName(e.target.value);
         }}/>
-        <InputBox label={"mobile"} placeholder={"9898989898"} onChange={
+        <InputBox label={"Mobile"} placeholder={"9898989898"} onChange={
             (e)=>{
                 setMobile(e.target.value);
             }
@@ -45,6 +50,7 @@ export const Asignup=()=>{
                }
             }
         }/>
+       </div>
 
     </div>
 

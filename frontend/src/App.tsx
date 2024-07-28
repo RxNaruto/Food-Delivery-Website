@@ -9,8 +9,9 @@ import { AddedRestaurant } from "./pages/AddedRestuarant";
 import { AddRestaurants } from "./pages/AddRestaurant";
 import { AddFood } from "./pages/AddFood";
 import { AddedFood } from "./pages/AddedFood";
-import { AllFoodItems } from "./pages/AllFoodItems";
+
 import { Loading } from "./components/Loading";
+import FoodGrid from "./pages/AllFoodItems";
 
 
 function App(){
@@ -28,7 +29,7 @@ function App(){
     <Route path="/aRes" element={<AddRestaurants />} />
     <Route path="/aFood" element={<AddFood />} />
     <Route path="/foodAdded" element={<AddedFood />} />
-    <Route path="/getFood" element={<AllFoodItems />} />
+    <Route path="/getFood" element={<FoodGrid />} />
     <Route path="/loading" element={<Loading />} />
     
 

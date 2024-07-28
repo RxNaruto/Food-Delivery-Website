@@ -13,7 +13,7 @@ export const NavigateButton=({to,label}: NavigateButtonProps)=>{
     }
 
     return <div>
-        <button onClick={handleClick} className="text-sm text-black hover:text-red-500">
+        <button onClick={handleClick} className="text-black hover:text-red-500 text-lg">
             {label}
         </button>
     </div>

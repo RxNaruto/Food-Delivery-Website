@@ -2,9 +2,10 @@ import { useState } from "react"
 import { Button } from "../components/Button"
 import { InputBox } from "../components/InputBox"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
+import { Appbar } from "../components/Appbar"
 
 export const Alogin=()=>{
     const[username,setUsername]=useState("");
@@ -12,7 +13,9 @@ export const Alogin=()=>{
     const navigate = useNavigate();
 
   
-    return <div className="flex flex-col h-screen justify-center items-center bg-image2">
+    return <>
+    <Appbar />
+    <div className="flex flex-col h-screen justify-center items-center bg-image2">
         <div className="bg-slate-800 w-1/3 h-3/6 flex flex-col items-center justify-center drop-shadow-2xl rounded-md">
         <Heading label={"Login"} />
         <SubHeading label={"Enter Your Details Here"} />
@@ -43,8 +46,16 @@ export const Alogin=()=>{
                
             }
         }/>
+         <div className="flex">
+        <SubHeading label={"Create an account"}/>
+        <Link to={"/asignup"} className="text-white underline hover:text-red-500 pl-3">
+        Signup
+        </Link>
+        </div>
         </div>
 
     </div>
 
+    
+    </>
 }

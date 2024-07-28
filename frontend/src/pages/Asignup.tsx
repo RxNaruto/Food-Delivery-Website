@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button } from "../components/Button"
 import { InputBox } from "../components/InputBox"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
 
@@ -50,6 +50,12 @@ export const Asignup=()=>{
                }
             }
         }/>
+        <div className="flex">
+        <SubHeading label={"Already have an Account"}/>
+        <Link to={"/alogin"} className="text-white underline hover:text-red-500 pl-3">
+        Login
+        </Link>
+        </div>
        </div>
 
     </div>

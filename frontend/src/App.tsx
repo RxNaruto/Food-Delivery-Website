@@ -11,7 +11,7 @@ import { AddFood } from "./pages/AddFood";
 import { AddedFood } from "./pages/AddedFood";
 
 import { Loading } from "./components/Loading";
-import FoodGrid from "./pages/AllFoodItems";
+import {FoodGrid} from "./pages/AllFoodItems";
 
 
 function App(){

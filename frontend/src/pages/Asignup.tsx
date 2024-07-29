@@ -5,6 +5,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
+import { Appbar } from "../components/Appbar"
 
 export const Asignup=()=>{
     const[username,setUsername]=useState("");
@@ -12,7 +13,9 @@ export const Asignup=()=>{
     const[name,setName]=useState("");
     const[mobile,setMobile]=useState("");
     const navigate = useNavigate();
-    return <div className="flex flex-col h-screen justify-center items-center bg-image2">
+    return <>
+    <Appbar />
+    <div className="flex flex-col h-screen justify-center items-center bg-image2">
        <div className="bg-slate-800 w-2/6 h-4/6 flex flex-col items-center justify-center drop-shadow-2xl rounded-md">
        <Heading label={"Signup"}/>
             <SubHeading label={"Enter you details here"} />
@@ -59,5 +62,7 @@ export const Asignup=()=>{
        </div>
 
     </div>
+    
+    </>
 
 }

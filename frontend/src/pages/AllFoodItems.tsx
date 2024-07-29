@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FoodItems } from "../hooks/FoodItems";
 
 
-const FoodGrid = () => {
+export const FoodGrid = () => {
     const { foods, loading, error } = FoodItems();
     const navigate = useNavigate();
 
@@ -28,4 +28,3 @@ const FoodGrid = () => {
     );
 };
 
-export default FoodGrid;

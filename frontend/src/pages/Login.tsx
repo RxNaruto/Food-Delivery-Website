@@ -39,8 +39,23 @@ export const Login=()=>{
                 toast.success("Login Successful");
                 navigate("/home");
                } catch (error) {
-                toast.error("Login failed, Check you credentials")
-                console.log(error);
+                if(axios.isAxiosError(error)){
+                    if(error.response?.status===400){
+                        toast.error("Incorrect details")
+                    }
+                    else if(error.response?.status===404){
+                        toast.error("User not Found")
+                    }
+                    else if(error.response?.status===401){
+                        toast.error("Invalid Password")
+                    }
+                    else if(error.response?.status===500){
+                        toast.error("Internal Server Error")
+                    }
+                }
+                else{
+                    toast.error("Something went wrong")
+                }
                 
                }
                

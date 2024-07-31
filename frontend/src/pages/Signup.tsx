@@ -5,6 +5,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
+import {toast} from "react-toastify";
 
 export const Signup=()=>{
     const[username,setUsername]=useState("");
@@ -45,8 +46,20 @@ export const Signup=()=>{
                  mobile: parseInt(mobile)
                 })
                 localStorage.setItem("token",response.data.token);
+                toast.success("Sign up Successful");
                 navigate("/getFood");
                } catch (error) {
+                if(axios.isAxiosError(error)){
+                    if(error.response?.status===400){
+                        toast.error("Incorrect detail")
+                    }
+                    else if(error.response?.status===406){
+                        toast.error("User already exist")
+                    }
+                    else{
+                        toast.error("Internal Server Error")
+                    }
+                }
                 console.log(error);
                }
             }

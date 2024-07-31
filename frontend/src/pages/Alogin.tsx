@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
 import { Appbar } from "../components/Appbar"
+import {toast} from "react-toastify"
 
 export const Alogin=()=>{
     const[username,setUsername]=useState("");
@@ -39,7 +40,22 @@ export const Alogin=()=>{
                 })
                 localStorage.setItem("token",response.data.token);
                 navigate("/aPage");
+                toast.success("Login Successful");
                } catch (error) {
+                if(axios.isAxiosError(error)){
+                    if(error.response?.status===400){
+                        toast.error("Incorrect detail")
+                    }
+                    else if(error.response?.status===404){
+                        toast.error("User doesn't exist")
+                    }
+                    else if(error.response?.status===401){
+                        toast.error("Invalid Password");
+                    }
+                    else{
+                        toast.error("Internal Server Error")
+                    }
+                }
                 console.log(error);
                 
                }

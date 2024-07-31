@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
 import { Appbar } from "../components/Appbar"
+import {toast} from "react-toastify"
 
 export const Asignup=()=>{
     const[username,setUsername]=useState("");
@@ -47,8 +48,20 @@ export const Asignup=()=>{
                  mobile: parseInt(mobile)
                 })
                 localStorage.setItem("token",response.data.token);
+                toast.success("Signup Successfull");
                 navigate("/aPage");
                } catch (error) {
+                if(axios.isAxiosError(error)){
+                    if(error.response?.status===400){
+                        toast.error("Incorrect detail")
+                    }
+                    else if(error.response?.status===409){
+                        toast.error("User already exist")
+                    }
+                    else{
+                        toast.error("Internal Server Error")
+                    }
+                }
                 console.log(error);
                }
             }

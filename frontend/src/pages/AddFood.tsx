@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { SubHeading } from "../components/SubHeading";
+import {toast } from "react-toastify"
 
 export const AddFood=()=>{
     const[name,setName] = useState("");
@@ -32,8 +33,19 @@ export const AddFood=()=>{
                         Authorization: `Bearer ${token}`
                     }
                 })
+                toast.success("Food added successfully");
                 navigate('/foodAdded');
+                
             } catch (error){
+                if(axios.isAxiosError(error)){
+                    if(error.response?.status===400){
+                        toast.error("Incorrect detail")
+                    }
+                   
+                    else{
+                        toast.error("Internal Server Error")
+                    }
+                }
                 console.log(error);
                 
             }

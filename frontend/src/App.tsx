@@ -9,15 +9,16 @@ import { AddedRestaurant } from "./pages/AddedRestuarant";
 import { AddRestaurants } from "./pages/AddRestaurant";
 import { AddFood } from "./pages/AddFood";
 import { AddedFood } from "./pages/AddedFood";
-
-import { Loading } from "./components/Loading";
 import {FoodGrid} from "./pages/AllFoodItems";
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App(){
   return(
     <>
     <BrowserRouter >
+    <ToastContainer />
     <Routes>
     <Route path="/signup" element={<Signup />}/>
     <Route path="/login" element={<Login />}/>
@@ -30,10 +31,11 @@ function App(){
     <Route path="/aFood" element={<AddFood />} />
     <Route path="/foodAdded" element={<AddedFood />} />
     <Route path="/getFood" element={<FoodGrid />} />
-    <Route path="/loading" element={<Loading />} />
+    
     
 
     </Routes>
+      
     </BrowserRouter>
     </>
   )

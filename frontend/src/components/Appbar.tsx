@@ -7,6 +7,7 @@ export const Appbar=()=>{
             <NavigateButton to={"/asignup"} label={"Foody Buisness"} />
             <NavigateButton to={"/home"} label={"Home"} />
             <NavigateButton to={"/getFood"} label={"Food"} />
+            <NavigateButton to={"/signup"} label={"Signup"} />
         </div>
     </div>
 }

@@ -5,6 +5,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import { Heading } from "../components/Heading"
 import { SubHeading } from "../components/SubHeading"
+import {toast} from "react-toastify"
 
 export const Login=()=>{
     const[username,setUsername]=useState("");
@@ -35,8 +36,10 @@ export const Login=()=>{
                 
                 })
                 localStorage.setItem("token",response.data.token);
+                toast.success("Login Successful");
                 navigate("/home");
                } catch (error) {
+                toast.error("Login failed, Check you credentials")
                 console.log(error);
                 
                }

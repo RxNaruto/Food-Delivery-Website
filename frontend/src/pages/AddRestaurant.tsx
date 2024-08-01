@@ -34,7 +34,7 @@ export const AddRestaurants=()=>{
                     }
                 })
                 toast.success("Restaurant added successfully")
-                navigate('/resAdd');
+                navigate('/restaurant');
 
             } catch (error){
                 if(axios.isAxiosError(error)){

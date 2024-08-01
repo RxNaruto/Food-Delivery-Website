@@ -38,8 +38,15 @@ export const AddFood=()=>{
                 
             } catch (error){
                 if(axios.isAxiosError(error)){
+
                     if(error.response?.status===400){
                         toast.error("Incorrect detail")
+                    }
+                    else if(error.response?.status===401){
+                        toast.error("You are not authorized");
+                    }
+                    else if(error.response?.status===403){
+                        toast.error("Incorrect login credentials")
                     }
                    
                     else{

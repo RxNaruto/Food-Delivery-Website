@@ -213,18 +213,31 @@ adminRouter.post("/addFood",adminAuth,async(req,res)=>{
 
 })
 adminRouter.get("/allRestuarant",adminAuth,async(req:CustomRequest,res)=>{
+    const restuarantId = Number(req.query.restuarantId);
     try {
-        const response = await prisma.admin.findFirst({
-            where: {
-                id: req.adminId
-            },
-           select:{
-            restaurant: true
-           }
-        });
-        res.status(200).json({
-            data: response
-        })
+        if(restuarantId){
+            const response = await prisma.restaurants.findFirst({
+                where: {
+                    id: restuarantId
+                }
+            })
+            res.status(200).json({
+                data: response
+            })
+        }
+        else{
+            const response = await prisma.admin.findFirst({
+                where: {
+                    id: req.adminId
+                },
+               select:{
+                restaurant: true
+               }
+            });
+            res.status(200).json({
+                data: response
+            })
+        }
     } catch (error) {
         res.status(500).json({
             message: "Internal Server Error"
@@ -232,6 +245,8 @@ adminRouter.get("/allRestuarant",adminAuth,async(req:CustomRequest,res)=>{
         
     }
 })
+
+adminRouter.get("/allRestaurant/ser")
 
 
 export default adminRouter;

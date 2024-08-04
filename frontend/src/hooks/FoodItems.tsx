@@ -6,6 +6,10 @@ interface Food{
     id: number;
     description: string;
     price: number;
+    restaurantId: number;
+    restaurant: {
+        name: string;
+    };
 }
 
 interface UseFoodItems{
@@ -31,6 +35,7 @@ export const FoodItems = ({searchQuery}: UseFoodItems={})=>{
                 }
             );
             setFoods(response.data.foods);
+            console.log(response.data.foods);
             } catch (error) {
                 if (axios.isAxiosError(error) && error.response) {
                     setError(error.response.data.msg || "Error fetching data");

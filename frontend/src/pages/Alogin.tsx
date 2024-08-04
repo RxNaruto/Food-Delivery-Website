@@ -39,7 +39,7 @@ export const Alogin=()=>{
                 
                 })
                 localStorage.setItem("token",response.data.token);
-                navigate("/aPage");
+                navigate("/restaurant");
                 toast.success("Login Successful");
                } catch (error) {
                 if(axios.isAxiosError(error)){

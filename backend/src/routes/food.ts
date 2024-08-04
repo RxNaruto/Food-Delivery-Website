@@ -24,7 +24,15 @@ foodRouter.get("/getAll",userAuth,async(req: Request,res: Response)=>{
             })
         }
         else{
-            response = await prisma.food.findMany();
+            response = await prisma.food.findMany({
+                include:{
+                    restaurant:{
+                        select:{
+                            name: true
+                        }
+                    }
+                }
+            });
         res.status(200).json({
             foods: response
         })

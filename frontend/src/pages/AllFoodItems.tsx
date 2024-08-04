@@ -22,6 +22,7 @@ export const FoodGrid = () => {
                     <h2 className="text-xl font-bold">{food.name}</h2>
                     <p className="text-gray-700">{food.description}</p>
                     <p className="text-green-600 font-bold">Price: Rs. {food.price}</p>
+                    <p className="text-purple-500 font-bold">Restaurant: {food.restaurant.name}</p>
                 </div>
             ))}
         </div>

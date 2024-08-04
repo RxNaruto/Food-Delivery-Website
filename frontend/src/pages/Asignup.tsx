@@ -49,7 +49,7 @@ export const Asignup=()=>{
                 })
                 localStorage.setItem("token",response.data.token);
                 toast.success("Signup Successfull");
-                navigate("/aPage");
+                navigate("/restaurant");
                } catch (error) {
                 if(axios.isAxiosError(error)){
                     if(error.response?.status===400){
